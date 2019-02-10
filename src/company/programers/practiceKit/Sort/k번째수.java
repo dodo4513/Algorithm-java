@@ -1,4 +1,4 @@
-package company.programers.practiceKit.sort;
+package company.programers.practiceKit.Sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
