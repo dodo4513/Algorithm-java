@@ -1,6 +1,8 @@
 package company.programers.practiceKit.DFSBFS;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -41,6 +43,7 @@ public class 네트워크 {
   }
 
   class Point {
+
     int x;
     int color;
 
@@ -53,5 +56,19 @@ public class 네트워크 {
   public static void main(String args[]) {
     네트워크 a = new 네트워크();
     System.out.println(a.solution(n, computers));
+
+    String aa = new String("a");
+    String bb = new String("a");
+    System.out.println(aa == bb);
+    System.out.println(aa.equals(bb));
+
+    Map<String, Boolean> m = new HashMap<>();
+    m.put(aa, true);
+    m.put(bb, true);
+
+    System.out.println(aa.hashCode());
+    System.out.println(bb.hashCode());
+
+    System.out.println(m);
   }
 }
