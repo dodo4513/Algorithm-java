@@ -1,5 +1,10 @@
 package company.codility.lesson;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author doyoung hwang on 2019-06-03
  */
@@ -8,26 +13,30 @@ public class ArrayPair {
 
   public static void main(String[] args) {
 
-    System.out.print(Solution.solution(1));
+    int[] r = {};
+    int k = 3;
+    System.out.print(Solution.solution(r, k));
   }
 
   static class Solution {
 
-    public static int solution(int N) {
-      int count = -1;
-      int maxCount = 0;
-      while (N >= 1) {
-        if (N % 2 == 0) {
-          if (count != -1) {
-            count++;
-          }
-        } else {
-          maxCount = maxCount > count ? maxCount : count;
-          count = 0;
-        }
-        N /= 2;
+    public static int[] solution(int[] A, int K) {
+      if (A.length == 0) {
+        return A;
       }
-      return maxCount;
+
+      K = K % A.length;
+
+      if (K == 0) {
+        return A;
+      }
+
+      List<Integer> list = Arrays.stream(A).boxed().collect(Collectors.toList());
+      List<Integer> result = new ArrayList<>();
+      result.addAll(list.subList(list.size() - K, list.size()));
+      result.addAll(list.subList(0, list.size() - K));
+
+      return result.stream().mapToInt(Integer::intValue).toArray();
     }
   }
 }

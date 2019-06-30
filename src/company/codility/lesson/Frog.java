@@ -1,42 +1,47 @@
 package company.codility.lesson;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Stack;
 
 /**
  * @author doyoung hwang on 2019-06-03
  */
-public class Forg {
+public class Frog {
 
 
   public static void main(String[] args) {
 
-    int[] r = {};
-    int k = 3;
-    System.out.print(Solution.solution(r, k));
+    int[] A = {4, 3, 2, 1, 5};
+    int[] B = {0, 1, 0, 0, 0};
+
+    System.out.print(Solution.solution(A, B));
   }
 
   static class Solution {
 
-    public static int[] solution(int[] A, int K) {
-      if (A.length == 0) {
-        return A;
+    public static int solution(int[] A, int[] B) {
+      int ret = 0;
+      Stack<Integer> stack = new Stack<>();
+
+      for (int i = 0; i < B.length; i++) {
+        if (stack.empty() && B[i] == 0) {
+          ret++;
+        } else if (B[i] == 1) {
+          stack.push(A[i]);
+        } else {
+          // fight!
+          while (!stack.isEmpty()) {
+            int size = stack.pop();
+            if (A[i] < size) {
+              stack.push(size);
+              break;
+            }
+          }
+          if (stack.isEmpty()) {
+            ret++;
+          }
+        }
       }
-
-      K = K % A.length;
-
-      if (K == 0) {
-        return A;
-      }
-
-      List<Integer> list = Arrays.stream(A).boxed().collect(Collectors.toList());
-      List<Integer> result = new ArrayList<>();
-      result.addAll(list.subList(list.size() - K, list.size()));
-      result.addAll(list.subList(0, list.size() - K));
-
-      return result.stream().mapToInt(Integer::intValue).toArray();
+      return ret + stack.size();
     }
   }
 }

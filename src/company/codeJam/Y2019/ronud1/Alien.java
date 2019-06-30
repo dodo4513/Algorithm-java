@@ -54,7 +54,7 @@ public class Alien {
 /**
  *
 1
-6 
+6
 CODEJAM
 HAM
 JAM
