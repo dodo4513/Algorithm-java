@@ -25,7 +25,7 @@ public class FireMyJob {
     dfs(array, day + 1, visited, money);
 
     // 선택 X
-    if (!visited[day] && array[day][T] > 0) {
+    if (!visited[day]) {
       for (int i = day; i < day + array[day][T]; i++) {
         visited[i] = true;
       }
