@@ -13,6 +13,7 @@ public class FireMyJob {
   private static int maximumMoney = -1;
 
   static void dfs(int[][] array, int day, boolean[] visited, int money) {
+    // 기저
     if (day == n) {
       if (money > maximumMoney) {
         maximumMoney = money;
@@ -20,8 +21,10 @@ public class FireMyJob {
       return;
     }
 
+    // 선택 O
     dfs(array, day + 1, visited, money);
 
+    // 선택 X
     if (!visited[day] && array[day][T] > 0) {
       for (int i = day; i < day + array[day][T]; i++) {
         visited[i] = true;
