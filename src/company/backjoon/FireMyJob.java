@@ -21,10 +21,10 @@ public class FireMyJob {
       return;
     }
 
-    // 선택 O
+    // 선택 X
     dfs(array, day + 1, visited, money);
 
-    // 선택 X
+    // 선택 O
     if (!visited[day]) {
       for (int i = day; i < day + array[day][T]; i++) {
         visited[i] = true;
