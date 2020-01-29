@@ -1,17 +1,14 @@
 package company.openTalk.Y200105;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
- * @author cyclamen on 1/29/20
+ * @author cyclamen on 1/29/20 https://programmers.co.kr/learn/courses/30/lessons/12938
  */
 public class BestSet {
 
   public static int[] solution(int n, int s) {
-    List<Integer> answer = new ArrayList<>();
+    int[] answer = new int[n];
 
     if (n > s) {
       return new int[]{-1};
@@ -20,13 +17,12 @@ public class BestSet {
     int base = (int) Math.floor(s / (double) n);
     int mod = s - base * n;
 
-    for (int i = 0; i < n; i++) {
-
-      answer.add(base + (mod-- > 0 ? 1 : 0));
+    Arrays.fill(answer, 0, n - mod, base);
+    if (mod != 0) {
+      Arrays.fill(answer, n - mod, n, base + 1);
     }
 
-    Collections.reverse(answer);
-    return answer.stream().mapToInt(Integer::intValue).toArray();
+    return answer;
   }
 
   public static void main(String[] args) {
