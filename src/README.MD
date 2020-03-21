@@ -8,6 +8,7 @@
 .computeIfAbsent
 .computeIfPresent(key, (key, value) -> )
 .getOrDefault
+map.merge(rank, 1, Integer::sum);
 
 # Queue
 
@@ -30,3 +31,4 @@ String.join("", array)
 # Stream 
 
 .stream().collect(Collectors.joining())
+
