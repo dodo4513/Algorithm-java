@@ -5,7 +5,7 @@
 .keySet()
 .values()
 
-.computeIfAbsent
+.computeIfAbsent(key, (key) ->)
 .computeIfPresent(key, (key, value) -> )
 .getOrDefault
 map.merge(rank, 1, Integer::sum);
@@ -17,18 +17,17 @@ PriorityQueue
 
 .offer, .add
 .poll
-.peek 
+.peek
 .isEmpty
-
 
 # Deque
 
-# String 
+# String
 
 .toCharArray
 String.join("", array)
 
-# Stream 
+# Stream
 
 .stream().collect(Collectors.joining())
 
